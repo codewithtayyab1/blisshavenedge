@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* 17px base → text-sm = 14.875px ≈ 15px, text-base = 17px */
+    font-size: 17px;
+  }
+  body {
+    @apply font-inter text-dark-text bg-white antialiased;
+    line-height: 1.65;
+  }
+  p {
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4 {
+    @apply font-playfair;
+    line-height: 1.2;
+  }
+}
