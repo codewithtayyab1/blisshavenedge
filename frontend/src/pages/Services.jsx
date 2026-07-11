@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SERVICE_CATEGORIES, DEALS, FACILITIES } from "../data/salonData";
 import { useAnims } from "../lib/animations";
 import { useSEO } from "../hooks/useSEO";
+import Lightbox from "../components/Lightbox";
 
 // ─── Menu Card Carousel ───────────────────────────────────────────────────────
 const MENU_CARDS = [
@@ -18,6 +19,7 @@ function MenuCarousel() {
   const [current, setCurrent] = useState(0);
   const [imgErrors, setImgErrors] = useState({});
   const timerRef = useRef(null);
+  const [lightboxSrc, setLightboxSrc] = useState(null);
 
   const goTo = useCallback((index) => {
     setCurrent((index + MENU_CARDS.length) % MENU_CARDS.length);
@@ -70,7 +72,8 @@ function MenuCarousel() {
                   src={card.src}
                   alt={card.alt}
                   onError={() => handleImgError(i)}
-                  className="w-full h-full object-contain"
+                  onClick={() => setLightboxSrc(card.src)}
+                  className="w-full h-full object-contain cursor-zoom-in"
                   style={{ imageOrientation: "from-image" }}
                 />
               )}
@@ -130,6 +133,12 @@ function MenuCarousel() {
           />
         ))}
       </div>
+
+      <Lightbox
+        src={lightboxSrc}
+        alt="Menu card"
+        onClose={() => setLightboxSrc(null)}
+      />
     </div>
   );
 }

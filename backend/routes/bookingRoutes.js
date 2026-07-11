@@ -13,6 +13,26 @@ const bookingLimiter = rateLimit({
   message: { message: 'Too many booking requests from this device. Please wait a few minutes and try again.' },
 })
 
+
+// Screenshot upload — warna Cloudinary storage/bandwidth spam ho sakta hai
+const uploadLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Too many upload attempts. Please wait a few minutes and try again.' },
+})
+
+// GET /:ref lookup — warna koi script BHE-0001 se BHE-9999 tak chala kar
+// sab customers ka naam/phone/date/payment-screenshot nikal sakta hai
+const refLookupLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Too many lookup attempts. Please wait a few minutes and try again.' },
+})
+
 const router = Router()
 
 const bookingValidation = [
@@ -37,11 +57,9 @@ function validate(req, res, next) {
 // POST /api/bookings                     — public, creates new booking (rate limited)
 router.post('/', bookingLimiter, bookingValidation, validate, createBooking)
 
-// POST /api/bookings/upload-screenshot   — public, customer attaches payment proof
-// Must be BEFORE /:ref so Express doesn't swallow "upload-screenshot" as a ref param
-router.post('/upload-screenshot', singleImage('screenshot'), uploadScreenshot)
+router.post('/upload-screenshot', uploadLimiter, singleImage('screenshot'), uploadScreenshot)
 
-// GET  /api/bookings/:ref                — public, fetch booking by reference number
+router.get('/:ref', refLookupLimiter, getBookingByRef)
 router.get('/:ref', getBookingByRef)
 
 export default router

@@ -51,7 +51,7 @@ const FAQS = [
   },
   {
     q: 'Can I book a combo deal?',
-    a: 'Absolutely. We offer value combo deals (Deal 1 to Deal 4, plus seasonal specials) that bundle popular services together at a better price. You can select these right in the booking form.',
+    a: 'Absolutely. We offer value combo deals (Deal 1 to Deal 5, plus seasonal specials) that bundle popular services together at a better price. You can select these right in the booking form.',
   },
 ]
 
@@ -334,12 +334,9 @@ export default function Home() {
                     {svc.category}
                   </span>
                 </div>
-                <div className="flex flex-col items-end gap-2 shrink-0 ml-4">
-                  <ServiceIcon category={svc.category} className="w-5 h-5 text-gold" />
-                  <span className="font-inter text-sm text-dark-text/60">
-                    Rs. {svc.price.toLocaleString()}
-                  </span>
-                </div>
+               <div className="flex flex-col items-end gap-2 shrink-0 ml-4">
+  <ServiceIcon category={svc.category} className="w-5 h-5 text-gold" />
+</div>
               </motion.div>
             ))}
           </motion.div>

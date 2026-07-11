@@ -6,11 +6,22 @@ import mongoose from 'mongoose'
 import authRoutes from './routes/authRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
+import helmet from 'helmet'
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5000
+
+app.use(helmet())
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
+    },
+  })
+)
 
 // --- Middleware ---
 // Allow requests from the React dev server
