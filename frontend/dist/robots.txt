@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Replace with real domain
+Sitemap: https://blisshavenedge.com/sitemap.xml
