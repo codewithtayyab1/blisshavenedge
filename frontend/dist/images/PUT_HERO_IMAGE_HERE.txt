@@ -1,7 +1,0 @@
-Drop your hero salon photo here as:
-  hero.jpeg
-
-It is referenced in Home.jsx as:
-  src="/images/hero.jpeg"
-
-Recommended size: 1200x800px or wider (16:9 or 4:3 ratio works well).
