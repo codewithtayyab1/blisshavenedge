@@ -102,7 +102,7 @@ export default function Footer() {
           <p className="font-inter text-[11px] text-dark-text/30 text-center">
             Website designed &amp; developed by{' '}
             <a
-              href="https://wa.me/923140927273"
+              href="https://wa.me/923220592909"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold hover:text-gold-dark transition-colors font-medium"
