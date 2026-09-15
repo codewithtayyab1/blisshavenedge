@@ -24,7 +24,7 @@ export default function Navbar() {
   // chahe click handler kisi wajah se miss ho jaye
   useEffect(() => {
     setIsOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.key]);
 
   const close = () => setIsOpen(false);
 
