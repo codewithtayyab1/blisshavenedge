@@ -5,9 +5,7 @@ import api from '../lib/axios'
 import { SERVICE_CATEGORIES, DEALS } from '../data/salonData'
 
 // Special offers shown in the dropdown but NOT in the deals sections — no price
-const SPECIAL_OFFERS = [
-  { name: 'Haircut + Beard Combo (FREE Cleansing)', includes: 'Hair Cut + Beard Shave + Free Cleansing' },
-]
+const SPECIAL_OFFERS = []
 
 // Sum prices of all selected services; special offers have no price
 function sumPrices(serviceNames) {

@@ -1,22 +1,24 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function OfferWidget() {
-  const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
-  const close = () => setOpen(false)
+  const close = () => setOpen(false);
 
   const handleBookNow = () => {
-    close()
-    setTimeout(() => navigate('/book'), 150)
-  }
+    close();
+    setTimeout(() => navigate("/book", { state: { service: "Deal 1" } }), 150);
+  };
 
   return (
     <>
@@ -52,7 +54,7 @@ export default function OfferWidget() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            style={{ pointerEvents: open ? 'auto' : 'none' }}
+            style={{ pointerEvents: open ? "auto" : "none" }}
             className="fixed inset-0 bg-black/55 z-[60]"
             onClick={close}
           />
@@ -82,19 +84,31 @@ export default function OfferWidget() {
 
               {/* Header */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-11 h-11 rounded-full bg-gold/15 flex items-center justify-center text-xl shrink-0">🎁</div>
+                <div className="w-11 h-11 rounded-full bg-gold/15 flex items-center justify-center text-xl shrink-0">
+                  🎁
+                </div>
                 <div>
-                  <p className="font-inter text-[10px] tracking-widest uppercase text-gold mb-0.5">Limited Time</p>
-                  <h2 className="font-playfair text-2xl text-dark-text leading-tight">Special Offer</h2>
+                  <p className="font-inter text-[10px] tracking-widest uppercase text-gold mb-0.5">
+                    Limited Time
+                  </p>
+                  <h2 className="font-playfair text-2xl text-dark-text leading-tight">
+                    Special Offer
+                  </h2>
                 </div>
               </div>
 
               <div className="w-full h-px bg-gold/20 mb-4" />
 
               <p className="font-inter text-dark-text/65 leading-relaxed mb-6">
-                Get a <span className="font-semibold text-dark-text">FREE Cleansing</span> with every{' '}
-                <span className="font-semibold text-dark-text">Haircut + Beard</span> combo!
-                Book now to claim this offer at the salon.
+                Get a{" "}
+                <span className="font-semibold text-dark-text">
+                  FREE Cleansing
+                </span>{" "}
+                with every{" "}
+                <span className="font-semibold text-dark-text">
+                  Haircut + Beard
+                </span>{" "}
+                combo! Book now to claim this offer at the salon.
               </p>
 
               <button
@@ -117,5 +131,5 @@ export default function OfferWidget() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
