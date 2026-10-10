@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         cream: '#F8F4EE',
-        gold: '#D4AF37',
-        'gold-dark': '#B8962E',
+        gold: '#C9A227',
+        'gold-dark': '#A88520',
         'dark-text': '#1e1e1e',
         'light-gray': '#F5F5F5',
       },
